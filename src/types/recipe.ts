@@ -17,7 +17,7 @@ export interface RecipeSearchResponse {
 }
 
 export interface FavoriteRecipe {
-  id: string;
+  idMeal: string;
   strMeal: string;
   strMealThumb: string;
   strCategory: string;

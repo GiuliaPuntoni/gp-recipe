@@ -7,7 +7,13 @@ export const favoritesService = {
   getFavorites: (): FavoriteRecipe[] => {
     try {
       const stored = localStorage.getItem(FAVORITES_KEY);
-      return stored ? JSON.parse(stored) : [];
+      if (!stored) return [];
+      const parsed = JSON.parse(stored);
+      return parsed.map((fav: any) =>
+        fav.idMeal
+          ? fav
+          : { ...fav, idMeal: fav.id }
+      );
     } catch (error) {
       console.error("Error loading favorites:", error);
       return [];
@@ -19,7 +25,7 @@ export const favoritesService = {
     try {
       const favorites = favoritesService.getFavorites();
       const favoriteRecipe: FavoriteRecipe = {
-        id: recipe.idMeal,
+        idMeal: recipe.idMeal,
         strMeal: recipe.strMeal,
         strMealThumb: recipe.strMealThumb,
         strCategory: recipe.strCategory,
@@ -29,7 +35,7 @@ export const favoritesService = {
 
       const updatedFavorites = [
         favoriteRecipe,
-        ...favorites.filter((fav) => fav.id !== recipe.idMeal),
+        ...favorites.filter((fav) => fav.idMeal !== recipe.idMeal),
       ];
       localStorage.setItem(FAVORITES_KEY, JSON.stringify(updatedFavorites));
 
@@ -43,7 +49,9 @@ export const favoritesService = {
   removeFromFavorites: (recipeId: string): void => {
     try {
       const favorites = favoritesService.getFavorites();
-      const updatedFavorites = favorites.filter((fav) => fav.id !== recipeId);
+      const updatedFavorites = favorites.filter(
+        (fav) => fav.idMeal !== recipeId
+      );
       localStorage.setItem(FAVORITES_KEY, JSON.stringify(updatedFavorites));
 
       console.log("Removed from favorites:", recipeId);
@@ -56,7 +64,7 @@ export const favoritesService = {
   isFavorite: (recipeId: string): boolean => {
     try {
       const favorites = favoritesService.getFavorites();
-      return favorites.some((fav) => fav.id === recipeId);
+      return favorites.some((fav) => fav.idMeal === recipeId);
     } catch (error) {
       console.error("Error checking favorite status:", error);
       return false;
