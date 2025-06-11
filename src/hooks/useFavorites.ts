@@ -21,14 +21,14 @@ export const useFavorites = () => {
   };
 
   const removeFromFavorites = (recipeId: string) => {
-    const recipe = favorites.find((fav) => fav.id === recipeId);
+    const recipe = favorites.find((fav) => fav.idMeal === recipeId);
     favoritesService.removeFromFavorites(recipeId);
     setFavorites(favoritesService.getFavorites());
 
     if (recipe) {
       alert({
         title: "Removed from Favorites",
-        description: `${recipe.name} has been removed from your favorites.`,
+        description: `${recipe.strMeal} has been removed from your favorites.`,
         duration: 3000,
       });
     }
