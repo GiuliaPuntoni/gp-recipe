@@ -27,7 +27,7 @@ const SearchBar = () => {
         placeholder={"Search for recipes by name..."}
         disabled={loading}
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        handleChange={(val: string) => setQuery(val)}
         handleReset={handleReset}
       />
 
