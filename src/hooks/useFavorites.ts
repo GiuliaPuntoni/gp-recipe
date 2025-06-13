@@ -1,9 +1,13 @@
 import { favoritesService } from "@/lib/favorite";
+import { setToastMessage, setToastOpen } from "@/store/recipeSlice";
+import { useAppDispatch } from "@/store/store";
 import { FavoriteRecipe, Recipe } from "@/types/recipe";
 import { useEffect, useState } from "react";
 
 export const useFavorites = () => {
   const [favorites, setFavorites] = useState<FavoriteRecipe[]>([]);
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     setFavorites(favoritesService.getFavorites());
@@ -13,11 +17,10 @@ export const useFavorites = () => {
     favoritesService.addToFavorites(recipe);
     setFavorites(favoritesService.getFavorites());
 
-    alert({
-      title: "Added to Favorites!",
-      description: `${recipe.strMeal} has been saved to your favorites.`,
-      duration: 3000,
-    });
+    dispatch(
+      setToastMessage(`${recipe.strMeal} has been saved to your favorites.`)
+    );
+    dispatch(setToastOpen(true));
   };
 
   const removeFromFavorites = (recipeId: string) => {
@@ -26,11 +29,12 @@ export const useFavorites = () => {
     setFavorites(favoritesService.getFavorites());
 
     if (recipe) {
-      alert({
-        title: "Removed from Favorites",
-        description: `${recipe.strMeal} has been removed from your favorites.`,
-        duration: 3000,
-      });
+      dispatch(
+        setToastMessage(
+          `${recipe.strMeal} has been removed from your favorites.`
+        )
+      );
+      dispatch(setToastOpen(true));
     }
   };
 
@@ -38,23 +42,10 @@ export const useFavorites = () => {
     return favoritesService.isFavorite(recipeId);
   };
 
-  const clearAllFavorites = () => {
-    favoritesService.clearFavorites();
-    setFavorites([]);
-
-    alert({
-      title: "Favorites Cleared",
-      description: "All favorite recipes have been removed.",
-      duration: 3000,
-    });
-  };
-
   return {
     favorites,
     addToFavorites,
     removeFromFavorites,
     isFavorite,
-    clearAllFavorites,
-    favoritesCount: favorites.length,
   };
 };

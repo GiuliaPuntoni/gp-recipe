@@ -5,7 +5,18 @@ import {
   selectRecipes,
 } from "@/store/selectors";
 import { useAppSelector } from "@/store/store";
-import { Button, COLORS, Column, HeadingSmall, Icon, SPACING } from "gpdesign";
+import {
+  Body,
+  Button,
+  COLORS,
+  Column,
+  HeadingSmall,
+  Hint,
+  Icon,
+  SPACING,
+  STATUS,
+} from "gpdesign";
+import Spinner from "../Spinner";
 import RecipeGrid from "./RecipeGrid";
 
 export default function RecipeList() {
@@ -13,10 +24,16 @@ export default function RecipeList() {
   const loading = useAppSelector(selectRecipeLoading);
   const error = useAppSelector(selectRecipeError);
 
-  if (loading) return <p>Loading recipes...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading)
+    return (
+      <Column gap={SPACING.SP_24} align="center">
+        <Spinner />
+        <Body>Loading recipes...</Body>
+      </Column>
+    );
+  if (error) return <Hint status={STATUS.DANGER}>Error: {error}</Hint>;
 
-  if (!recipes || recipes.length === 0) {
+  if (recipes?.length === 0) {
     return (
       <Column align="center" gap={SPACING.SP_24}>
         <Icon
@@ -30,7 +47,5 @@ export default function RecipeList() {
     );
   }
 
-  return (
-    <RecipeGrid recipes={recipes} onRecipeClick={() => console.log("click")} />
-  );
+  return <RecipeGrid recipes={recipes} />;
 }

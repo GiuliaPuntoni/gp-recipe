@@ -16,9 +16,12 @@ export default function HomePageComponent() {
   }, [dispatch]);
 
   return (
-    <Column gap={SPACING.SP_16}>
+    <Column gap={SPACING.SP_8} m={{ gap: SPACING.SP_32 }}>
+      {/* Header */}
       <Header />
+      {/* Search Bar */}
       <SearchBar />
+      {/* List of Recipes */}
       <RecipeList />
     </Column>
   );

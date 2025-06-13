@@ -3,6 +3,8 @@
 import { store } from "@/store/store";
 import { useEffect, useState } from "react";
 import { Provider } from "react-redux";
+import RecipeDetailModal from "../Recipe/RecipeDetailModal";
+import ToastMessage from "./ToastMessage";
 
 interface Props {
   children: React.ReactNode;
@@ -28,7 +30,18 @@ const WrapperLayout = ({ children }: Props) => {
 
   if (!isReady) return null;
 
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <Provider store={store}>
+      <>
+        {/* Recipe Detail Modal */}
+        <RecipeDetailModal />
+        {/* Toast */}
+        <ToastMessage />
+
+        {children}
+      </>
+    </Provider>
+  );
 };
 
 export default WrapperLayout;

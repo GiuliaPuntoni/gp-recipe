@@ -6,10 +6,9 @@ export interface Recipe {
   strArea: string;
   strInstructions: string;
   strMealThumb: string;
-  strTags?: string;
   strYoutube?: string;
-  strSource?: string;
-  [key: string]: string | undefined;
+  strSource?: string | undefined | null;
+  [key: string]: string | undefined | null;
 }
 
 export interface RecipeSearchResponse {

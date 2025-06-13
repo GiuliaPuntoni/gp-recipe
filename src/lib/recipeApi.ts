@@ -77,22 +77,4 @@ export const recipeApi = {
       throw new Error("Failed to load recipe details. Please try again.");
     }
   },
-
-  // Get random recipes
-  getRandomRecipes: async (count: number = 8): Promise<Recipe[]> => {
-    try {
-      const promises = Array.from({ length: count }, () =>
-        fetch(`${BASE_URL}/random.php`).then((res) => res.json())
-      );
-
-      const responses = await Promise.all(promises);
-      const recipes = responses.map((data) => data.meals?.[0]).filter(Boolean);
-
-      console.log("Random recipes:", recipes);
-      return recipes;
-    } catch (error) {
-      console.error("Error fetching random recipes:", error);
-      throw new Error("Failed to load random recipes. Please try again.");
-    }
-  },
 };

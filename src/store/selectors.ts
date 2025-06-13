@@ -5,3 +5,13 @@ export const selectRecipesState = (state: RootState) => state.recipes;
 export const selectRecipes = (state: RootState) => state.recipes.data;
 export const selectRecipeLoading = (state: RootState) => state.recipes.loading;
 export const selectRecipeError = (state: RootState) => state.recipes.error;
+
+export const selectDialagOpen = (state: RootState) => state.recipes.dialogOpen;
+export const selectCurrentRecipeId = (state: RootState) =>
+  state.recipes.currentRecipeId;
+export const selectCurrentRecipe = (state: RootState) =>
+  state.recipes.currentRecipe;
+
+export const selectToastOpen = (state: RootState) => state.recipes.toastOpen;
+export const selectToastMessage = (state: RootState) =>
+  state.recipes.toastMessage;

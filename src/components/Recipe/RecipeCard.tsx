@@ -10,6 +10,7 @@ import {
   RADIUS,
   RADIUS_VALUES,
   Row,
+  SHADOWS,
   SIZES,
   SPACING,
   Tag,
@@ -17,16 +18,19 @@ import {
 import React from "react";
 
 import { useFavorites } from "@/hooks/useFavorites";
+import { setCurrentRecipeId, setDialogOpen } from "@/store/recipeSlice";
+import { useAppDispatch } from "@/store/store";
 import { Recipe } from "@/types/recipe";
 import Image from "next/image";
 
 interface RecipeCardProps {
   recipe: Recipe;
-  onClick: () => void;
   className?: string;
 }
 
-const RecipeCard = ({ recipe, onClick }: RecipeCardProps) => {
+const RecipeCard = ({ recipe }: RecipeCardProps) => {
+  const dispatch = useAppDispatch();
+
   const { isFavorite, addToFavorites, removeFromFavorites } = useFavorites();
   const isRecipeFavorite = isFavorite(recipe.idMeal);
 
@@ -39,11 +43,22 @@ const RecipeCard = ({ recipe, onClick }: RecipeCardProps) => {
     }
   };
 
+  const handleClick = () => {
+    dispatch(setCurrentRecipeId(recipe.idMeal));
+    dispatch(setDialogOpen(true));
+  };
+
   return (
-    <Column bg={COLORS.bgWhite} radius={RADIUS.S} onClick={onClick} pointer>
+    <Column
+      bg={COLORS.bgWhite}
+      radius={RADIUS.S}
+      onClick={handleClick}
+      pointer
+      shadow={SHADOWS.S}
+    >
       <div className="relative">
         <Column
-          className="absolute opacity-0 hover:opacity-30"
+          className="absolute opacity-0 hover:opacity-30 gp-radius-s"
           style={{ width: "100%", height: "100%" }}
           bg={COLORS.black}
         />
@@ -78,12 +93,12 @@ const RecipeCard = ({ recipe, onClick }: RecipeCardProps) => {
         </Body>
 
         <Row gap={SPACING.SP_8}>
-          <Tag theme="secondary" size={SIZES.S}>
-            {recipe.strCategory}
-          </Tag>
-          <Tag theme="secondary" size={SIZES.S}>
-            {recipe.strArea}
-          </Tag>
+          {recipe.strCategory && <Tag size={SIZES.S}>{recipe.strCategory}</Tag>}
+          {recipe.strArea && (
+            <Tag customColor size={SIZES.S}>
+              {recipe.strArea}
+            </Tag>
+          )}
         </Row>
 
         <BodyExtraSmall className="line-clamp-3">

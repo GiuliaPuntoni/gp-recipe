@@ -1,4 +1,4 @@
-import ErrorBoundary from "@/components/utils/ErrorBoundary";
+import ErrorBoundary from "@/components/utilsComponents/ErrorBoundary";
 import HomePageComponent from "./HomePageComponent";
 
 export default function HomePage() {

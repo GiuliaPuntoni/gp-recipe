@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
 
-import WrapperLayout from "@/components/WrapperLayout";
+import WrapperLayout from "@/components/utilsComponents/WrapperLayout";
 
 const RalewayFont = Raleway({
   variable: "--font-raleway-sans",

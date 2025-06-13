@@ -1,4 +1,4 @@
-import ErrorBoundary from "@/components/utils/ErrorBoundary";
+import ErrorBoundary from "@/components/utilsComponents/ErrorBoundary";
 import FavoriteComponent from "./FavoriteComponent";
 
 export default function FavoritePage() {
