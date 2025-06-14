@@ -27,7 +27,7 @@ const SearchedResultsBox = () => {
         </Body>
       ) : (
         <Column align="center" gap={SPACING.SP_4}>
-          <HeadingMedium tag="h2">
+          <HeadingMedium tag="h2" align="center">
             A selection of our delicious recipes
           </HeadingMedium>
           <Body italic>Explore these recipes and get inspired!</Body>

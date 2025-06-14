@@ -11,7 +11,11 @@ const ToastMessage = () => {
   const toastMessage = useAppSelector(selectToastMessage);
 
   return (
-    <Toast isOpen={isOpen} onClose={() => dispatch(setToastOpen(false))}>
+    <Toast
+      style={{ maxWidth: "200px" }}
+      isOpen={isOpen}
+      onClose={() => dispatch(setToastOpen(false))}
+    >
       {toastMessage}
     </Toast>
   );
