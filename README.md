@@ -6,6 +6,12 @@ The interface is styled using **gpdesign** (a custom design system you can find 
 
 ---
 
+## 🔗 Demo
+
+🌍 [Live Demo on Vercel](https://gp-recipe.vercel.app)
+
+---
+
 ## ✨ Features
 
 - 🔍 Search recipes by name or ingredient
@@ -72,10 +78,29 @@ npm test
 
 ## 🧠 Design Decisions
 
-- 🔄 **Local persistence**: favorites are stored in `localStorage` using `favoritesService`, no backend required.
-- 🧭 **Redux Toolkit**: handles global state for search, recipe selection, and UI modals.
-- 🎨 **gpdesign**: provides consistent styling and accessible UI components.
-- ⚠️ **Error handling**: user-friendly messages for failed or empty searches.
+This project was developed with a focus on simplicity, scalability, and maintainability. Key architectural and tooling choices are explained below.
+
+### 🔄 Redux Toolkit
+
+Redux Toolkit was chosen as the global state management solution because it provides a **modern and streamlined way to manage complex state**. This allows the app to scale cleanly as new features (e.g., filters, user sessions) are added in the future.
+
+### 💾 localStorage
+
+`localStorage` is used to persist the user’s list of favorite recipes across sessions. This approach was selected because:
+
+- It enables **client-side persistence without requiring a backend or user authentication**
+- It's quick to implement and lightweight for this type of app
+- A dedicated `favoritesService` utility wraps all interactions with `localStorage`, keeping the logic centralized and testable, and making future migration to a remote backend easier
+
+### 🎨 gpdesign UI Library
+
+The application uses `gpdesign`, a design system and component library developed separately (and also authored by me). This choice was made to:
+
+- Ensure a **consistent and accessible UI** using well-defined components like `Column`, `Body`, and `Button`
+- **Integrate code I’ve personally written**, demonstrating how I structure and reuse frontend libraries across multiple projects
+- Showcase a **component-based design approach**, where visual and functional elements are modular, predictable, and easy to test or replace
+
+By using `gpdesign`, I also aimed to highlight my ability to **architect reusable UI systems**, integrate them into real-world projects, and maintain a clean developer experience through well-scoped abstractions.
 
 ---
 
