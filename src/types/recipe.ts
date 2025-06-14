@@ -4,7 +4,7 @@ export interface Recipe {
   strDrinkAlternate?: string;
   strCategory: string;
   strArea: string;
-  strInstructions: string;
+  strInstructions?: string;
   strMealThumb: string;
   strYoutube?: string;
   strSource?: string | undefined | null;

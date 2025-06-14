@@ -2,11 +2,15 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import {
   fetchRecipeByIngredient,
   fetchRecipeByName,
+  setSearchedIngredient,
+  setSearchedQuery,
 } from "@/store/recipeSlice";
-import { selectRecipeLoading } from "@/store/selectors";
+import {
+  selectRecipeLoading,
+  selectSerchedIngredient,
+} from "@/store/selectors";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import {
-  Body,
   BodySmall,
   Button,
   Column,
@@ -37,30 +41,29 @@ const SearchBar = () => {
 
   // States
   const [query, setQuery] = useState("");
-  const [ingredient, setIngredient] = useState("");
-  const [name, setName] = useState("");
 
   // Selectors
   const loading = useAppSelector(selectRecipeLoading);
+  const ingredient = useAppSelector(selectSerchedIngredient);
 
   // Handlers
   const handleSubmit = () => {
-    setIngredient("");
-    setName(query);
+    dispatch(setSearchedIngredient(""));
+    dispatch(setSearchedQuery(query));
     dispatch(fetchRecipeByName({ query }));
   };
 
   const handleIngredientClick = (search: string) => {
     setQuery("");
-    setName("");
-    setIngredient(search);
+    dispatch(setSearchedIngredient(search));
+    dispatch(setSearchedQuery(""));
     dispatch(fetchRecipeByIngredient({ ingredient: search }));
   };
 
   const handleReset = () => {
-    setName("");
     setQuery("");
-    setIngredient("");
+    dispatch(setSearchedIngredient(""));
+    dispatch(setSearchedQuery(""));
     dispatch(fetchRecipeByName({ query: "" }));
   };
 
@@ -86,27 +89,13 @@ const SearchBar = () => {
         >
           {loading ? <span>Searching...</span> : <>Search</>}
         </Button>
-        <Button iconLeft="faRotate" onClick={handleReset}></Button>
+        <Button
+          iconLeft="faRotate"
+          onClick={handleReset}
+          aria-label="reset-button"
+        ></Button>
       </Row>
     </Flex>
-  );
-
-  const searchResultsBox = (
-    <Column
-      className={isMobile ? "" : "gp-pt-16"}
-      style={{ minHeight: isMobile ? "auto" : "40px" }}
-    >
-      {name || ingredient ? (
-        <Body>
-          Search Results for:{" "}
-          <Body tag="span" weight="600">
-            {name || ingredient}
-          </Body>
-        </Body>
-      ) : (
-        <Body>Discover the recipes!</Body>
-      )}
-    </Column>
   );
 
   const searchIngredients = (
@@ -135,13 +124,11 @@ const SearchBar = () => {
     <Column gap={SPACING.SP_16}>
       <BannerFixed> {searchBox}</BannerFixed>
       {searchIngredients}
-      {searchResultsBox}
     </Column>
   ) : (
     <Column gap={SPACING.SP_16}>
       {searchBox}
       {searchIngredients}
-      {searchResultsBox}
     </Column>
   );
 };

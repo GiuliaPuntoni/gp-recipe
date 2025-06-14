@@ -10,9 +10,7 @@ export const favoritesService = {
       if (!stored) return [];
       const parsed = JSON.parse(stored);
       return parsed.map((fav: any) =>
-        fav.idMeal
-          ? fav
-          : { ...fav, idMeal: fav.id }
+        fav.idMeal ? fav : { ...fav, idMeal: fav.id }
       );
     } catch (error) {
       console.error("Error loading favorites:", error);
@@ -68,16 +66,6 @@ export const favoritesService = {
     } catch (error) {
       console.error("Error checking favorite status:", error);
       return false;
-    }
-  },
-
-  // Clear all favorites
-  clearFavorites: (): void => {
-    try {
-      localStorage.removeItem(FAVORITES_KEY);
-      console.log("Cleared all favorites");
-    } catch (error) {
-      console.error("Error clearing favorites:", error);
     }
   },
 };

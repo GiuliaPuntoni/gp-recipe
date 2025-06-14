@@ -3,7 +3,6 @@
 import {
   Body,
   BodyExtraSmall,
-  Button,
   COLORS,
   Column,
   Divider,
@@ -22,6 +21,7 @@ import { setCurrentRecipeId, setDialogOpen } from "@/store/recipeSlice";
 import { useAppDispatch } from "@/store/store";
 import { Recipe } from "@/types/recipe";
 import Image from "next/image";
+import FavoriteButton from "../FavoriteButton.tsx/FavoriteButton";
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -73,13 +73,11 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
             borderRadius: `${RADIUS_VALUES.SM} ${RADIUS_VALUES.SM} 0 0`,
           }}
         />
-
-        <Button
-          iconLeft="faHeart"
-          iconLeftType={isRecipeFavorite ? "solid" : "regular"}
+        <FavoriteButton
           onClick={handleFavoriteClick}
           className="absolute top-3 right-3"
-        ></Button>
+          active={isRecipeFavorite}
+        />
       </div>
 
       <Column

@@ -16,7 +16,7 @@ import {
   SPACING,
   STATUS,
 } from "gpdesign";
-import Spinner from "../Spinner";
+import Spinner from "../Spinner/Spinner";
 import RecipeGrid from "./RecipeGrid";
 
 export default function RecipeList() {

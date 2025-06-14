@@ -7,7 +7,7 @@ import {
 import {
   selectCurrentRecipe,
   selectCurrentRecipeId,
-  selectDialagOpen,
+  selectDialogOpen,
   selectRecipeLoading,
 } from "@/store/selectors";
 import { useAppDispatch, useAppSelector } from "@/store/store";
@@ -30,13 +30,14 @@ import {
 } from "gpdesign";
 import Image from "next/image";
 import { useEffect } from "react";
-import Spinner from "../Spinner";
+import FavoriteButton from "../FavoriteButton.tsx/FavoriteButton";
+import Spinner from "../Spinner/Spinner";
 
 const RecipeDetailModal = () => {
   const dispatch = useAppDispatch();
 
   const loading = useAppSelector(selectRecipeLoading);
-  const isOpen = useAppSelector(selectDialagOpen);
+  const isOpen = useAppSelector(selectDialogOpen);
   const currentRecipeId = useAppSelector(selectCurrentRecipeId);
   const currentRecipe = useAppSelector(selectCurrentRecipe);
 
@@ -87,8 +88,9 @@ const RecipeDetailModal = () => {
   const ingredients = getIngredients(currentRecipe);
 
   return (
-    <Overlay isOpen={isOpen}>
+    <Overlay isOpen={isOpen} onClick={handleClose}>
       <Column
+        onClick={(e: React.MouseEvent) => e.stopPropagation()}
         style={{
           maxWidth: "800px",
           margin: "0 auto",
@@ -133,11 +135,10 @@ const RecipeDetailModal = () => {
 
               {/* Header buttons */}
               <Row gap={SPACING.SP_8} className="absolute top-4 right-4">
-                <Button
-                  iconLeft="faHeart"
-                  iconLeftType={isRecipeFavorite ? "solid" : "regular"}
+                <FavoriteButton
+                  active={isRecipeFavorite}
                   onClick={handleFavoriteToggle}
-                ></Button>
+                ></FavoriteButton>
                 <Button
                   iconLeft="faXmark"
                   theme="secondary"

@@ -12,6 +12,8 @@ type RecipeState = {
   currentRecipeId: string;
   currentRecipe: Recipe | null;
   toastMessage?: string;
+  searchedQuery?: string;
+  searchedIngredient?: string;
 };
 
 const initialState: RecipeState = {
@@ -23,6 +25,8 @@ const initialState: RecipeState = {
   currentRecipeId: "",
   currentRecipe: null,
   toastMessage: "",
+  searchedQuery: "",
+  searchedIngredient: "",
 };
 
 // Thunks
@@ -72,6 +76,12 @@ const recipe = createSlice({
     },
     setToastMessage: (state, action) => {
       state.toastMessage = action.payload;
+    },
+    setSearchedQuery: (state, action) => {
+      state.searchedQuery = action.payload;
+    },
+    setSearchedIngredient: (state, action) => {
+      state.searchedIngredient = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -148,5 +158,8 @@ export const {
   setDialogOpen,
   setToastOpen,
   setToastMessage,
+  setSearchedQuery,
+  setSearchedIngredient,
 } = recipe.actions;
+
 export default recipe.reducer;

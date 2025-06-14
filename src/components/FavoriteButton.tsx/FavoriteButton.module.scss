@@ -1,0 +1,18 @@
+.favorite-button {
+  background-color: var(--color-white) !important;
+  &:hover {
+    background-color: var(--color-accent100) !important;
+  }
+  svg {
+    color: var(--color-red-heart) !important;
+  }
+  &.active {
+    background-color: var(--color-red-heart) !important;
+    svg {
+      color: var(--color-white) !important;
+    }
+    &:hover {
+      background-color: var(--color-red-heart-hover) !important;
+    }
+  }
+}

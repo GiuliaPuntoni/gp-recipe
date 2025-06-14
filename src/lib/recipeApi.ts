@@ -23,8 +23,7 @@ export const recipeApi = {
 
       return data.meals || [];
     } catch (error) {
-      console.error("Error searching recipes:", error);
-      throw new Error("Failed to search recipes. Please try again.");
+      throw new Error(`Failed to search recipes. ${error}. Please try again.`);
     }
   },
 
@@ -48,9 +47,8 @@ export const recipeApi = {
 
       return data.meals || [];
     } catch (error) {
-      console.error("Error searching by ingredient:", error);
       throw new Error(
-        "Failed to search recipes by ingredient. Please try again."
+        `Failed to search recipes by ingredient. ${error}. Please try again.`
       );
     }
   },
@@ -73,8 +71,9 @@ export const recipeApi = {
 
       return data.meals?.[0] || null;
     } catch (error) {
-      console.error("Error fetching recipe details:", error);
-      throw new Error("Failed to load recipe details. Please try again.");
+      throw new Error(
+        `Failed to load recipe details. ${error}. Please try again.`
+      );
     }
   },
 };

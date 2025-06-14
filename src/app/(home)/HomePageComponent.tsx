@@ -2,7 +2,7 @@
 
 import Header from "@/components/Header";
 import RecipeList from "@/components/Recipe/RecipeList";
-import SearchBar from "@/components/SearchBar";
+import SearchedResultsBox from "@/components/SearchedResultsBox";
 import { fetchRecipe } from "@/store/recipeSlice";
 import { useAppDispatch } from "@/store/store";
 import { Column, SPACING } from "gpdesign";
@@ -19,8 +19,7 @@ export default function HomePageComponent() {
     <Column gap={SPACING.SP_8} m={{ gap: SPACING.SP_32 }}>
       {/* Header */}
       <Header />
-      {/* Search Bar */}
-      <SearchBar />
+      <SearchedResultsBox />
       {/* List of Recipes */}
       <RecipeList />
     </Column>
