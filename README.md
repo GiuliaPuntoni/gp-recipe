@@ -1,25 +1,56 @@
-# GP Recipe Finder
+# 🍽️ GP Recipe Finder
 
-## Project Overview
+GP Recipe Finder is a responsive web application built with **Next.js** that allows users to search, explore, and save favorite recipes using the public [TheMealDB](https://www.themealdb.com/api.php) API.
 
-GP Recipe Finder is a Next.js application for browsing meals from [TheMealDB](https://www.themealdb.com/). Users can search recipes by name or ingredient, view detailed instructions in a modal and save favorites for later. Favorites are stored in `localStorage` so they persist between sessions.
+The interface is styled using **gpdesign** (a custom design system you can find [here](https://github.com/GiuliaPuntoni/gpdesign)) and **Tailwind CSS**. Global state is managed with **Redux Toolkit**, while favorites are stored locally via `localStorage`.
 
-### Features
+---
 
-- Search recipes by name or ingredient
-- View recipe details in a modal window
-- Mark and manage favorite recipes
-- Favorites persistence via `localStorage`
-- Global state management with Redux Toolkit
-- UI components from gpdesign with Tailwind utilities
+## ✨ Features
 
-## Installation
+- 🔍 Search recipes by name or ingredient
+- 📄 View detailed recipe information (ingredients, instructions)
+- ❤️ Save and manage favorite recipes (persisted via `localStorage`)
+- 📦 Global state management using Redux Toolkit
+- 💅 Consistent interface with **gpdesign** and **Tailwind**
+- 🧪 Unit tested with Jest and React Testing Library
+- 📱 Responsive and mobile-friendly UI
+- ❌ Error handling for empty or failed searches
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology                | Purpose                           |
+| ------------------------- | --------------------------------- |
+| **Next.js**               | Framework for rendering & routing |
+| **Redux Toolkit**         | Global state management           |
+| **Tailwind CSS**          | Utility-first CSS styling         |
+| **gpdesign**              | Prebuilt UI components            |
+| **Jest**                  | Unit testing                      |
+| **React Testing Library** | UI component testing              |
+| **TheMealDB API**         | Recipe data source                |
+
+---
+
+## 📦 Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/GiuliaPuntoni/gp-recipe.git
+cd gp-recipe
+```
+
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-## Development
+---
+
+## 🚀 Development
 
 Start the development server:
 
@@ -27,43 +58,48 @@ Start the development server:
 npm run dev
 ```
 
-Run the unit tests:
+---
+
+## 🧪 Testing
+
+Run unit tests:
 
 ```bash
 npm test
 ```
 
-## Key Libraries
+---
 
-- **Next.js** – routing and server-side rendering
-- **Redux Toolkit** and **React Redux** – state management
-- **gpdesign** – design system components
-- **Tailwind CSS** – utility styling
-- **Jest** and **React Testing Library** – testing
+## 🧠 Design Decisions
 
-## gpdesign Usage
+- 🔄 **Local persistence**: favorites are stored in `localStorage` using `favoritesService`, no backend required.
+- 🧭 **Redux Toolkit**: handles global state for search, recipe selection, and UI modals.
+- 🎨 **gpdesign**: provides consistent styling and accessible UI components.
+- ⚠️ **Error handling**: user-friendly messages for failed or empty searches.
 
-You can find **gpdesing** github project [here](https://github.com/GiuliaPuntoni/gpdesign) and the npm package info [here](https://www.npmjs.com/package/gpdesign).
+---
 
-Base styles are imported in `src/app/layout.tsx`:
+## 🤔 Assumptions
 
-```tsx
-import "gpdesign/dist/index.css";
-```
+- App content is in English (API only supports English).
+- No authentication is required.
+- API may return incomplete or null results for some queries.
 
-Components such as `Column`, `Row`, `Body` and `Button` are used throughout the app.
+---
 
-```tsx
-import { Column, Body, Button } from "gpdesign";
+## 🐛 Known Issues
 
-<Column>
-  <Body>Delicious recipe</Body>
-  <Button onClick={addToFavorites}>Save</Button>
-</Column>;
-```
+- API responses may contain incomplete data for some search terms.
+- Modal accessibility via keyboard navigation is currently limited (e.g., no focus trap or escape key handling).
 
-## Design Decisions
+---
 
-- Favorites are stored using `localStorage` through the `favoritesService` utility.
-- Redux manages search results, the selected recipe and UI state like dialogs and toast messages.
-- gpdesign provides a consistent look while Tailwind utilities handle some particular features.
+## 🧾 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🙋‍♀️ Author
+
+**Giulia Puntoni** – [GitHub](https://github.com/GiuliaPuntoni)

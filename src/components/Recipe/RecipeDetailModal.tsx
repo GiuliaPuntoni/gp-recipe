@@ -173,7 +173,7 @@ const RecipeDetailModal = () => {
                   Instructions
                 </HeadingSmall>
                 <Column gap={SPACING.SP_16}>
-                  {currentRecipe.strInstructions
+                  {(currentRecipe.strInstructions ?? "")
                     .split("\n")
                     .map((step, index) => {
                       if (!step.trim()) return null;
