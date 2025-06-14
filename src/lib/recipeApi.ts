@@ -19,7 +19,6 @@ export const recipeApi = {
       }
 
       const data: RecipeSearchResponse = await response.json();
-      console.log("API Response:", data);
 
       return data.meals || [];
     } catch (error) {
@@ -43,7 +42,6 @@ export const recipeApi = {
       }
 
       const data: RecipeSearchResponse = await response.json();
-      console.log("Ingredient search response:", data);
 
       return data.meals || [];
     } catch (error) {
@@ -67,7 +65,6 @@ export const recipeApi = {
       }
 
       const data: RecipeSearchResponse = await response.json();
-      console.log("Recipe details response:", data);
 
       return data.meals?.[0] || null;
     } catch (error) {

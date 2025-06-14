@@ -21,7 +21,7 @@ import { setCurrentRecipeId, setDialogOpen } from "@/store/recipeSlice";
 import { useAppDispatch } from "@/store/store";
 import { Recipe } from "@/types/recipe";
 import Image from "next/image";
-import FavoriteButton from "../FavoriteButton.tsx/FavoriteButton";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 interface RecipeCardProps {
   recipe: Recipe;

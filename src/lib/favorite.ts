@@ -36,8 +36,6 @@ export const favoritesService = {
         ...favorites.filter((fav) => fav.idMeal !== recipe.idMeal),
       ];
       localStorage.setItem(FAVORITES_KEY, JSON.stringify(updatedFavorites));
-
-      console.log("Added to favorites:", favoriteRecipe);
     } catch (error) {
       console.error("Error adding to favorites:", error);
     }
@@ -51,8 +49,6 @@ export const favoritesService = {
         (fav) => fav.idMeal !== recipeId
       );
       localStorage.setItem(FAVORITES_KEY, JSON.stringify(updatedFavorites));
-
-      console.log("Removed from favorites:", recipeId);
     } catch (error) {
       console.error("Error removing from favorites:", error);
     }

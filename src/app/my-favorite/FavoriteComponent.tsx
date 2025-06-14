@@ -11,7 +11,6 @@ import { useEffect } from "react";
 export default function FavoriteComponent() {
   const { favorites } = useFavorites();
   const dispatch = useAppDispatch();
-  console.log("favorites", favorites);
 
   useEffect(() => {
     dispatch(setRecipes(favorites));

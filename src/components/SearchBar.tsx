@@ -7,7 +7,7 @@ import {
 } from "@/store/recipeSlice";
 import {
   selectRecipeLoading,
-  selectSerchedIngredient,
+  selectSearchedIngredient,
 } from "@/store/selectors";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import {
@@ -44,7 +44,7 @@ const SearchBar = () => {
 
   // Selectors
   const loading = useAppSelector(selectRecipeLoading);
-  const ingredient = useAppSelector(selectSerchedIngredient);
+  const ingredient = useAppSelector(selectSearchedIngredient);
 
   // Handlers
   const handleSubmit = () => {

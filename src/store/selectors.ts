@@ -16,7 +16,7 @@ export const selectToastOpen = (state: RootState) => state.recipes.toastOpen;
 export const selectToastMessage = (state: RootState) =>
   state.recipes.toastMessage;
 
-export const selectSerchedQuery = (state: RootState) =>
+export const selectSearchedQuery = (state: RootState) =>
   state.recipes.searchedQuery;
-export const selectSerchedIngredient = (state: RootState) =>
+export const selectSearchedIngredient = (state: RootState) =>
   state.recipes.searchedIngredient;

@@ -1,4 +1,4 @@
-import FavoriteButton from "@/components/FavoriteButton.tsx/FavoriteButton";
+import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 describe("FavoriteButton", () => {

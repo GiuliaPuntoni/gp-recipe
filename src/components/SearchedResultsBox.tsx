@@ -1,5 +1,8 @@
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { selectSerchedIngredient, selectSerchedQuery } from "@/store/selectors";
+import {
+  selectSearchedIngredient,
+  selectSearchedQuery,
+} from "@/store/selectors";
 import { useAppSelector } from "@/store/store";
 import { Body, Column, HeadingMedium, SPACING } from "gpdesign";
 
@@ -7,8 +10,8 @@ const SearchedResultsBox = () => {
   const isMobile = useIsMobile();
 
   // Selector
-  const ingredient = useAppSelector(selectSerchedIngredient);
-  const searched = useAppSelector(selectSerchedQuery);
+  const ingredient = useAppSelector(selectSearchedIngredient);
+  const searched = useAppSelector(selectSearchedQuery);
 
   return (
     <Column

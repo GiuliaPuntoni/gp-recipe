@@ -30,7 +30,7 @@ import {
 } from "gpdesign";
 import Image from "next/image";
 import { useEffect } from "react";
-import FavoriteButton from "../FavoriteButton.tsx/FavoriteButton";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import Spinner from "../Spinner/Spinner";
 
 const RecipeDetailModal = () => {
