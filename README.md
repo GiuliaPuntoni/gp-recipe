@@ -20,6 +20,7 @@ The interface is styled using **gpdesign** (a custom design system you can find 
 - 📦 Global state management using Redux Toolkit
 - 💅 Consistent interface with **gpdesign** and **Tailwind**
 - 🧪 Unit tested with Jest and React Testing Library
+- 🐛 E2E test with Playwright
 - 📱 Responsive and mobile-friendly UI
 - ❌ Error handling for empty or failed searches
 
@@ -35,6 +36,7 @@ The interface is styled using **gpdesign** (a custom design system you can find 
 | **gpdesign**              | Prebuilt UI components            |
 | **Jest**                  | Unit testing                      |
 | **React Testing Library** | UI component testing              |
+| **Playwright**            | E2E testing                       |
 | **TheMealDB API**         | Recipe data source                |
 
 ---
@@ -72,6 +74,14 @@ Run unit tests:
 
 ```bash
 npm test
+```
+
+Run e2e test:
+
+```bash
+npm run test:e2e          # run E2E tests in headless mode
+npm run test:e2e:headed   # run with visible browser
+npm run test:e2e:debug    # run in debug mode
 ```
 
 ---
@@ -116,6 +126,9 @@ By using `gpdesign`, I also aimed to highlight my ability to **architect reusabl
 
 - API responses may contain incomplete data for some search terms.
 - Modal accessibility via keyboard navigation is currently limited (e.g., no focus trap or escape key handling).
+- Error handling in `recipeApi.ts` is basic — all fetch errors are thrown as generic strings.
+- No autocomplete in the search bar — enhancing the `SearchBar.tsx` with dynamic suggestions would improve UX.
+- The favorites feature could be made more visible — e.g., showing the count of saved recipes and providing a “Clear All” button.
 
 ---
 

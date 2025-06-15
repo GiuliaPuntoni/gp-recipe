@@ -7,9 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "HEADLESS=false playwright test",
+    "test:e2e:debug": "HEADLESS=false playwright test --debug"
   },
   "dependencies": {
+    "@playwright/test": "^1.53.0",
     "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/postcss": "^4.1.8",
     "gpdesign": "^3.2.11",

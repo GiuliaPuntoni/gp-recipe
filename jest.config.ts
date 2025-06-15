@@ -11,6 +11,7 @@ const customJestConfig = {
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
   },
+  testPathIgnorePatterns: ["/node_modules/", "/src/e2e_test/"],
   coveragePathIgnorePatterns: [
     "/node_modules/",
     "/src/hooks/.*\\.(ts|tsx)$",
