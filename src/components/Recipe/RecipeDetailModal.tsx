@@ -85,6 +85,7 @@ const RecipeDetailModal = () => {
 
   if (!currentRecipe) return null;
 
+  console.log("currentRecipe", currentRecipe);
   const ingredients = getIngredients(currentRecipe);
 
   return (

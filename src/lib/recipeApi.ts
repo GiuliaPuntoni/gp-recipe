@@ -65,8 +65,10 @@ export const recipeApi = {
       }
 
       const data: RecipeSearchResponse = await response.json();
-
-      return data.meals?.[0] || null;
+      if (Array.isArray(data.meals)) {
+        return data.meals?.[0] || null;
+      }
+      return null;
     } catch (error) {
       throw new Error(
         `Failed to load recipe details. ${error}. Please try again.`

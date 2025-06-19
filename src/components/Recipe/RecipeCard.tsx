@@ -21,6 +21,7 @@ import { setCurrentRecipeId, setDialogOpen } from "@/store/recipeSlice";
 import { useAppDispatch } from "@/store/store";
 import { Recipe } from "@/types/recipe";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 interface RecipeCardProps {
@@ -30,6 +31,7 @@ interface RecipeCardProps {
 
 const RecipeCard = ({ recipe }: RecipeCardProps) => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const { isFavorite, addToFavorites, removeFromFavorites } = useFavorites();
   const isRecipeFavorite = isFavorite(recipe.idMeal);
@@ -46,6 +48,7 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
   const handleClick = () => {
     dispatch(setCurrentRecipeId(recipe.idMeal));
     dispatch(setDialogOpen(true));
+    router.push(`/?recipeid=${recipe.idMeal}`);
   };
 
   return (
